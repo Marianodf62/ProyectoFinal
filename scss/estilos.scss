@@ -1,0 +1,55 @@
+$color-principal: #000;
+$color-secundario: #1a1a1a;
+$color-hover: #e0b0ff; // lavanda claro, se puede ajustar
+
+.encabezado {
+    background: linear-gradient(135deg, $color-principal, $color-secundario);
+    color: white;
+    text-align: center;
+
+    .nombre-marca {
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: white;
+    }
+
+    .navbar {
+        margin-top: 1rem;
+
+        .nav-link {
+            color: white;
+            margin: 0 0.8rem;
+            position: relative;
+            transition: all 0.3s ease;
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 0%;
+                height: 2px;
+                left: 50%;
+                bottom: 0;
+                background-color: $color-hover;
+                transition: all 0.3s ease;
+                transform: translateX(-50%);
+            }
+
+            &:hover {
+                color: $color-hover;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+
+        .navbar-toggler {
+            border: none;
+
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+            }
+        }
+    }
+}
