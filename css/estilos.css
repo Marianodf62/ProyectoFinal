@@ -1,0 +1,45 @@
+.encabezado {
+  background: linear-gradient(135deg, #000, #1a1a1a);
+  color: white;
+  text-align: center;
+}
+.encabezado .nombre-marca {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+}
+.encabezado .navbar {
+  margin-top: 1rem;
+}
+.encabezado .navbar .nav-link {
+  color: white;
+  margin: 0 0.8rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.encabezado .navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 50%;
+  bottom: 0;
+  background-color: #e0b0ff;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+.encabezado .navbar .nav-link:hover {
+  color: #e0b0ff;
+}
+.encabezado .navbar .nav-link:hover::after {
+  width: 100%;
+}
+.encabezado .navbar .navbar-toggler {
+  border: none;
+}
+.encabezado .navbar .navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/*# sourceMappingURL=estilos.css.map */
