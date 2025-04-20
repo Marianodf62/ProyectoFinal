@@ -1,11 +1,30 @@
-$color-principal: #000;
+$color-principal: #000000;
 $color-secundario: #1a1a1a;
-$color-hover: #e0b0ff; // lavanda claro, se puede ajustar
+$color-hover-header: #2c2c2c;
+$color-hover-link: #bb86fc;
+$color-header-scroll: rgba(10, 10, 10, 0.9); // cambia a negro opaco
 
 .encabezado {
     background: linear-gradient(135deg, $color-principal, $color-secundario);
     color: white;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.4s ease, top 0.3s ease;
+    z-index: 1030;
+
+    &.hover-activo:hover {
+        background-color: $color-hover-header;
+    }
+
+    &.scroll-activo {
+        background: $color-header-scroll;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    &.ocultar-header {
+        top: -100px;
+    }
 
     .nombre-marca {
         font-family: 'Segoe UI', sans-serif;
@@ -30,13 +49,13 @@ $color-hover: #e0b0ff; // lavanda claro, se puede ajustar
                 height: 2px;
                 left: 50%;
                 bottom: 0;
-                background-color: $color-hover;
+                background-color: $color-hover-link;
                 transition: all 0.3s ease;
                 transform: translateX(-50%);
             }
 
             &:hover {
-                color: $color-hover;
+                color: $color-hover-link;
 
                 &::after {
                     width: 100%;
