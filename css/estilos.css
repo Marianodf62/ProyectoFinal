@@ -1,59 +1,114 @@
-.encabezado {
-  background: linear-gradient(135deg, #000000, #1a1a1a);
-  color: white;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  transition: background-color 0.4s ease, top 0.3s ease;
-  z-index: 1030;
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  margin: 0;
+  color: #fff;
 }
-.encabezado.hover-activo:hover {
-  background-color: #2c2c2c;
+
+header {
+  background: #2c3e50;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.encabezado.scroll-activo {
-  background: rgba(10, 10, 10, 0.9);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+header .logo-nombre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.encabezado.ocultar-header {
-  top: -100px;
+header .logo {
+  max-width: 70px;
+  border-radius: 50%;
+  animation: fadeInDown 1.5s ease;
 }
-.encabezado .nombre-marca {
-  font-family: "Segoe UI", sans-serif;
-  font-size: 1.8rem;
+header .nombre {
+  font-size: 2.2rem;
   font-weight: 600;
-  color: white;
+  color: #fff;
+  animation: fadeInUp 1.5s ease;
 }
-.encabezado .navbar {
-  margin-top: 1rem;
+@media (max-width: 768px) {
+  header .nombre {
+    font-size: 1.8rem;
+  }
 }
-.encabezado .navbar .nav-link {
-  color: white;
-  margin: 0 0.8rem;
-  position: relative;
-  transition: all 0.3s ease;
+header nav.navbar {
+  width: 100%;
+  justify-content: center;
 }
-.encabezado .navbar .nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  left: 50%;
-  bottom: 0;
-  background-color: #bb86fc;
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-.encabezado .navbar .nav-link:hover {
-  color: #bb86fc;
-}
-.encabezado .navbar .nav-link:hover::after {
+header nav.navbar .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
-.encabezado .navbar .navbar-toggler {
+header nav.navbar .navbar-nav .nav-item {
+  margin: 0 0.75rem;
+}
+header nav.navbar .navbar-nav .nav-item .nav-link {
+  color: #fff !important;
+  transition: color 0.3s ease;
+  position: relative;
+}
+header nav.navbar .navbar-nav .nav-item .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #9b59b6;
+  transition: width 0.3s ease;
+}
+header nav.navbar .navbar-nav .nav-item .nav-link:hover::after {
+  width: 100%;
+}
+header nav.navbar .navbar-nav .nav-item .nav-link:hover {
+  color: #9b59b6 !important;
+}
+header nav.navbar .navbar-toggler {
   border: none;
 }
-.encabezado .navbar .navbar-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+header nav.navbar .navbar-toggler .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+@media (max-width: 768px) {
+  header {
+    height: 110px;
+  }
+  header .nombre {
+    font-size: 1.6rem;
+  }
+  header nav.navbar .navbar-nav {
+    flex-direction: column;
+  }
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /*# sourceMappingURL=estilos.css.map */

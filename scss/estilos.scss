@@ -1,74 +1,161 @@
-$color-principal: #000000;
-$color-secundario: #1a1a1a;
-$color-hover-header: #2c2c2c;
-$color-hover-link: #bb86fc;
-$color-header-scroll: rgba(10, 10, 10, 0.9); // cambia a negro opaco
+// _variables.scss
+// Colores y tamaños base utilizados en todo el proyecto
+$color-principal: #fff; // Blanco para textos
+$color-hover: #9b59b6; // Violeta para hover y subrayado
+$color-header-bg: #2c3e50; // Fondo oscuro del header
+$font-principal: 'Poppins', sans-serif;
+$tamano-logo: 70px; // Tamaño máximo del logo
+$transition-base: 0.3s ease; // Transición estándar
+$breakpoint-md: 768px; // Punto de quiebre para móviles
+$header-padding: 0.5rem; // Padding general del header
+$header-height: 190px; // Altura estándar del header
+$header-height-sm: 110px; // Altura del header en pantallas pequeñas
 
-.encabezado {
-    background: linear-gradient(135deg, $color-principal, $color-secundario);
-    color: white;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.4s ease, top 0.3s ease;
-    z-index: 1030;
+// _mixins.scss
+// Mixin para aplicar animaciones de entrada
+@mixin animacion($nombre, $duracion: 1.5s, $tipo: ease) {
+    animation: $nombre $duracion $tipo;
+}
 
-    &.hover-activo:hover {
-        background-color: $color-hover-header;
+// Mixin para efecto subrayado moderno con hover
+@mixin subrayado-hover($color) {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: $color;
+        transition: width $transition-base;
     }
 
-    &.scroll-activo {
-        background: $color-header-scroll;
-        backdrop-filter: blur(8px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    &:hover::after {
+        width: 100%;
+    }
+}
+
+// Mixin para media queries móviles
+@mixin media-md {
+    @media (max-width: $breakpoint-md) {
+        @content;
+    }
+}
+
+body {
+    font-family: $font-principal;
+    background-color: #fff;
+    margin: 0;
+    color: $color-principal; // Color blanco para todo el texto
+}
+
+header {
+    background: $color-header-bg; // Fondo oscuro
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Sombra sutil
+    padding: $header-padding;
+    height: $header-height;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .logo-nombre {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
-    &.ocultar-header {
-        top: -100px;
+    .logo {
+        max-width: $tamano-logo; // Controla el tamaño del logo
+        border-radius: 50%; // Hace el logo circular
+        @include animacion(fadeInDown); // Animación de entrada
     }
 
-    .nombre-marca {
-        font-family: 'Segoe UI', sans-serif;
-        font-size: 1.8rem;
+    .nombre {
+        font-size: 2.2rem;
         font-weight: 600;
-        color: white;
+        color: $color-principal; // Texto blanco
+        @include animacion(fadeInUp); // Animación hacia arriba
+
+        @include media-md {
+            font-size: 1.8rem; // Tamaño menor en móviles
+        }
     }
 
-    .navbar {
-        margin-top: 1rem;
+    nav.navbar {
+        width: 100%;
+        justify-content: center;
 
-        .nav-link {
-            color: white;
-            margin: 0 0.8rem;
-            position: relative;
-            transition: all 0.3s ease;
+        .navbar-nav {
+            display: flex; // Alinea los ítems en fila
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
 
-            &::after {
-                content: '';
-                position: absolute;
-                width: 0%;
-                height: 2px;
-                left: 50%;
-                bottom: 0;
-                background-color: $color-hover-link;
-                transition: all 0.3s ease;
-                transform: translateX(-50%);
-            }
+            .nav-item {
+                margin: 0 0.75rem; // Espaciado entre ítems
 
-            &:hover {
-                color: $color-hover-link;
+                .nav-link {
+                    color: $color-principal !important; // Letras blancas
+                    transition: color $transition-base;
+                    @include subrayado-hover($color-hover); // Subrayado violeta
 
-                &::after {
-                    width: 100%;
+                    &:hover {
+                        color: $color-hover !important; // Hover en violeta
+                    }
                 }
             }
         }
 
         .navbar-toggler {
-            border: none;
+            border: none; // Sin borde para el botón hamburguesa
 
             .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+                filter: invert(1); // Icono blanco
             }
         }
+    }
+}
+
+@include media-md {
+    header {
+        height: $header-height-sm; // Altura reducida en móviles
+
+        .nombre {
+            font-size: 1.6rem; // Texto más pequeño en móviles
+        }
+
+        nav.navbar .navbar-nav {
+            flex-direction: column; // Menú vertical en móviles
+        }
+    }
+}
+
+// Animaciones personalizadas
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
