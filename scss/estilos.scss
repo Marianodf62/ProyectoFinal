@@ -185,48 +185,304 @@ header {
 
 // Estilos para el contenedor del carrusel
 .carousel-container {
-  max-width: 50%; // Tamaño del carrusel (ajustable)
-  width: 100%;
-  margin: auto;
-
-  .carousel-title {
-    margin-top: 30px;
-    font-size: 1.5rem;
-    color: #333;
-    font-weight: bold;
-    font-family: $font-principal;
-    text-align: center;
-  }
-
-  .carousel {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  img {
-    border-radius: 0;
+    max-width: 50%; // Tamaño del carrusel (ajustable)
     width: 100%;
-    height: auto;
-  }
+    margin: auto;
+
+    .carousel-title {
+        margin-top: 30px;
+        font-size: 1.5rem;
+        color: #333;
+        font-weight: bold;
+        font-family: $font-principal;
+        text-align: center;
+    }
+
+    .carousel {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+        border-radius: 0;
+        width: 100%;
+        height: auto;
+    }
 }
 
 // Media Queries con mixins personalizados para responsividad
 @include media-md {
-  .carousel-container {
-    max-width: 90%; // Reducción del tamaño en pantallas medianas
+    .carousel-container {
+        max-width: 90%; // Reducción del tamaño en pantallas medianas
 
-    .carousel-title {
-      font-size: 1.2rem; // Texto más pequeño en pantallas medianas
+        .carousel-title {
+            font-size: 1.2rem; // Texto más pequeño en pantallas medianas
+        }
     }
-  }
 }
 
 // Media Query adicional para pantallas muy pequeñas
 @media (max-width: 480px) {
-  .carousel-container {
-    .carousel-title {
-      font-size: 1rem; // Ajuste extra para pantallas muy pequeñas
+    .carousel-container {
+        .carousel-title {
+            font-size: 1rem; // Ajuste extra para pantallas muy pequeñas
+        }
     }
-  }
+}
+
+// Sección de Cards Alternas
+
+.cards-section {
+    margin: 4rem auto;
+    padding: 2rem;
+    display: grid;
+    gap: 3rem;
+    max-width: 1200px;
+    font-family: $font-principal;
+
+    .card-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        align-items: center;
+        gap: 2rem;
+
+        &.anim-left {
+            @include animacion(desplazarIzq);
+        }
+
+        &.anim-right {
+            @include animacion(desplazarDer);
+        }
+    }
+
+    .card-content {
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform $transition-base;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+        h3 {
+            color: $color-header-bg;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #555;
+        }
+    }
+
+    .card-image {
+        img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+    }
+}
+
+// Media Queries para cards
+@include media-md {
+    .cards-section {
+        padding: 1rem;
+
+        .card-row {
+            grid-template-columns: 1fr; // Apila en móviles
+        }
+    }
+}
+
+// Keyframes personalizados para animaciones de entrada
+@keyframes desplazarIzq {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes desplazarDer {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// =====================
+// Mapa de localización encima del footer
+// =====================
+
+.map-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 3rem auto 2rem;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    animation: fadeInFooter 1.2s ease;
+
+    iframe {
+        width: 100%;
+        height: 50vh; // Ocupa el 50% de la altura de la pantalla
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+}
+
+@include media-md {
+    .map-section {
+        padding: 0 0.5rem;
+
+        iframe {
+            height: 40vh; // Altura adaptable en móviles
+        }
+    }
+}
+
+// =====================
+// Sección de Mapa
+// =====================
+
+.location-section {
+    background-color: #f4f4f4;
+    padding: 3rem 1rem;
+    text-align: center;
+    font-family: $font-principal;
+
+    h2 {
+        font-size: 2rem;
+        color: $color-header-bg;
+        margin-bottom: 2rem;
+    }
+
+    .map-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        animation: fadeInFooter 1.2s ease;
+
+        iframe {
+            width: 100%;
+            height: 50vh;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+    }
+}
+
+@include media-md {
+    .location-section {
+        padding: 2rem 0.5rem;
+
+        h2 {
+            font-size: 1.6rem;
+        }
+
+        .map-wrapper iframe {
+            height: 40vh;
+        }
+    }
+}
+
+// =====================
+// Footer con Logo, Redes e Información
+// =====================
+
+.footer {
+    background-color: $color-header-bg;
+    color: $color-principal;
+    padding: 3rem 1rem;
+    text-align: center;
+    font-family: $font-principal;
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 80px;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
+
+        h4 {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+    }
+
+    .footer-contact {
+        p {
+            margin: 0.25rem 0;
+        }
+    }
+
+    .footer-social {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+
+        a {
+            display: flex;
+            align-items: center;
+            color: $color-principal;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: color $transition-base;
+
+            i {
+                margin-right: 0.5rem;
+            }
+
+            &:hover {
+                color: $color-hover;
+            }
+        }
+    }
+}
+
+@include media-md {
+    .footer {
+        .footer-content {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+@keyframes fadeInFooter {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
