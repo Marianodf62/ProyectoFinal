@@ -4,11 +4,11 @@ $color-principal: #fff; // Blanco para textos
 $color-hover: #9b59b6; // Violeta para hover y subrayado
 $color-header-bg: #2c3e50; // Fondo oscuro del header
 $font-principal: 'Poppins', sans-serif;
-$tamano-logo: 70px; // Tamaño máximo del logo
+$tamano-logo: 90px; // Tamaño máximo del logo
 $transition-base: 0.3s ease; // Transición estándar
 $breakpoint-md: 768px; // Punto de quiebre para móviles
 $header-padding: 0.5rem; // Padding general del header
-$header-height: 190px; // Altura estándar del header
+$header-height: 130px; // Altura estándar del header
 $header-height-sm: 110px; // Altura del header en pantallas pequeñas
 
 // _mixins.scss
@@ -55,7 +55,6 @@ header {
     background: $color-header-bg; // Fondo oscuro
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Sombra sutil
     padding: $header-padding;
-    height: $header-height;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,22 +78,41 @@ header {
         font-weight: 600;
         color: $color-principal; // Texto blanco
         @include animacion(fadeInUp); // Animación hacia arriba
-
-        @include media-md {
-            font-size: 1.8rem; // Tamaño menor en móviles
-        }
+        text-align: center;
     }
 
     nav.navbar {
         width: 100%;
+        display: flex;
         justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .navbar-toggler {
+            border-color: $color-principal;
+            background-color: transparent;
+
+            .navbar-toggler-icon {
+                display: inline-block;
+                width: 1.5em;
+                height: 1.5em;
+                vertical-align: middle;
+                background: no-repeat center center;
+                background-size: 100% 100%;
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            }
+        }
+
+        .navbar-collapse {
+            justify-content: center;
+        }
 
         .navbar-nav {
             display: flex; // Alinea los ítems en fila
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            flex-wrap: wrap;
 
             .nav-item {
                 margin: 0 0.75rem; // Espaciado entre ítems
@@ -110,27 +128,32 @@ header {
                 }
             }
         }
-
-        .navbar-toggler {
-            border: none; // Sin borde para el botón hamburguesa
-
-            .navbar-toggler-icon {
-                filter: invert(1); // Icono blanco
-            }
-        }
     }
 }
 
 @include media-md {
     header {
-        height: $header-height-sm; // Altura reducida en móviles
+        height: auto; // Altura automática adaptable
+        padding: 1rem;
 
         .nombre {
             font-size: 1.6rem; // Texto más pequeño en móviles
         }
 
-        nav.navbar .navbar-nav {
-            flex-direction: column; // Menú vertical en móviles
+        nav.navbar {
+            flex-direction: column;
+            align-items: center;
+
+            .navbar-nav {
+                flex-direction: column; // Menú vertical en móviles
+                align-items: center;
+                width: 100%;
+                padding: 0;
+
+                .nav-item {
+                    margin: 0.5rem 0;
+                }
+            }
         }
     }
 }
@@ -158,4 +181,52 @@ header {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+// Estilos para el contenedor del carrusel
+.carousel-container {
+  max-width: 50%; // Tamaño del carrusel (ajustable)
+  width: 100%;
+  margin: auto;
+
+  .carousel-title {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+    font-family: $font-principal;
+    text-align: center;
+  }
+
+  .carousel {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Media Queries con mixins personalizados para responsividad
+@include media-md {
+  .carousel-container {
+    max-width: 90%; // Reducción del tamaño en pantallas medianas
+
+    .carousel-title {
+      font-size: 1.2rem; // Texto más pequeño en pantallas medianas
+    }
+  }
+}
+
+// Media Query adicional para pantallas muy pequeñas
+@media (max-width: 480px) {
+  .carousel-container {
+    .carousel-title {
+      font-size: 1rem; // Ajuste extra para pantallas muy pequeñas
+    }
+  }
 }
