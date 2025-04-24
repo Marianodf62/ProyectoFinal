@@ -38,6 +38,7 @@ body {
     background-color: #fff;
     margin: 0;
     color: $color-principal; // Color blanco para todo el texto
+    overflow-x: hidden;
 }
 
 header {
@@ -88,6 +89,7 @@ header {
                 vertical-align: middle;
                 background: no-repeat center center;
                 background-size: 100% 100%;
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
             }
         }
 
@@ -267,8 +269,8 @@ header {
 
     .card-image {
         img {
-            width: 100%;
-            border-radius: 15px;
+            width: 90%;
+            border-radius: 50px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
     }
@@ -470,4 +472,3 @@ header {
         transform: translateY(0);
     }
 }
-

@@ -87,7 +87,7 @@
 
             p {
                 font-size: 0.9rem;
-                color: $color-text;
+                color: darken($color-text, 20%);
             }
         }
 
