@@ -365,5 +365,72 @@ header nav.navbar .navbar-nav .nav-item .nav-link:hover {
     transform: translateY(0);
   }
 }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.cortes-hombres {
+  background-color: #f9f9f9;
+}
+.cortes-hombres .titulo-seccion {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111;
+}
+.cortes-hombres .subtitulo {
+  font-size: 1.2rem;
+  color: #c59d5f;
+  margin-top: 0.5rem;
+}
+.cortes-hombres .corte-card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.cortes-hombres .corte-card img {
+  width: 100%;
+  object-fit: cover;
+  height: 300px;
+  transition: transform 0.4s ease;
+}
+.cortes-hombres .corte-card .info {
+  padding: 1rem;
+  text-align: center;
+}
+.cortes-hombres .corte-card .info h5 {
+  color: #111;
+  font-weight: 600;
+}
+.cortes-hombres .corte-card .info p {
+  font-size: 0.95rem;
+  color: black;
+}
+.cortes-hombres .corte-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+.cortes-hombres .corte-card:hover img {
+  transform: scale(1.05);
+}
+@media (max-width: 768px) {
+  .cortes-hombres .titulo-seccion {
+    font-size: 2rem;
+  }
+  .cortes-hombres .subtitulo {
+    font-size: 1rem;
+  }
+  .cortes-hombres .corte-card img {
+    height: 220px;
+  }
+}
 
-/*# sourceMappingURL=estilos.css.map */
+/*# sourceMappingURL=main.css.map */

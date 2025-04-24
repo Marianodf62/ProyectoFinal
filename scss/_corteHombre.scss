@@ -1,0 +1,89 @@
+@import 'variables';
+
+// Mixins
+@mixin responsive($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: 576px) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: 768px) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: 992px) { @content; }
+  }
+}
+
+// Animación
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cortes-hombres {
+  background-color: $light-bg;
+
+  .titulo-seccion {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $primary-color;
+  }
+
+  .subtitulo {
+    font-size: 1.2rem;
+    color: $accent-color;
+    margin-top: 0.5rem;
+  }
+
+  .corte-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 300px;
+      transition: transform 0.4s ease;
+    }
+
+    .info {
+      padding: 1rem;
+      text-align: center;
+
+      h5 {
+        color: $primary-color;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 0.95rem;
+        color: darken($primary-color, 30%);
+      }
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+      img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // Responsive
+  @include responsive(md) {
+    .titulo-seccion {
+      font-size: 2rem;
+    }
+
+    .subtitulo {
+      font-size: 1rem;
+    }
+
+    .corte-card img {
+      height: 220px;
+    }
+  }
+}
