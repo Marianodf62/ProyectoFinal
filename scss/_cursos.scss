@@ -1,0 +1,116 @@
+@import 'variables';
+
+// MIXINS RESPONSIVE
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint ==sm {
+        @media (max-width: 576px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==md {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==lg {
+        @media (max-width: 992px) {
+            @content;
+        }
+    }
+}
+
+// ANIMACIÓN HOVER
+
+@keyframes hoverScale {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.03);
+    }
+}
+
+// SECCIÓN DE CURSOS
+
+.cursos {
+    background-color: $gris-claro;
+
+    .titulo-seccion {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: $color-principal1;
+    }
+
+    .subtitulo {
+        font-size: 1.1rem;
+        color: $color-hover;
+        margin-top: 0.5rem;
+    }
+
+    .curso-card {
+        background: #fff;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: $sombra;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        // Imagen de curso
+        img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        // Texto dentro de la tarjeta
+        .info {
+            padding: 1rem;
+            text-align: center;
+
+            h5 {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: $color-principal1;
+            }
+
+            p {
+                font-size: 0.95rem;
+                color: darken($color-principal1, 25%);
+            }
+        }
+
+        // Hover animado
+        &:hover {
+            animation: hoverScale 0.3s ease;
+
+            img {
+                transform: scale(1.05);
+            }
+
+            h5 {
+                color: $color-hover;
+            }
+        }
+    }
+
+    // MEDIA QUERIES
+
+    @include responsive(md) {
+        .titulo-seccion {
+            font-size: 2rem;
+        }
+
+        .subtitulo {
+            font-size: 1rem;
+        }
+
+        .curso-card img {
+            height: 200px;
+        }
+    }
+}

@@ -28,7 +28,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="shortcut icon" href="./assets/favicon/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/favicon/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -60,26 +60,53 @@
   </header>
 
 
+  <!-- Sección de Cortes de Damas -->
+  <section class="cortes-damas container py-5">
+    <!-- Encabezado de sección con animación -->
+    <div class="text-center mb-5" data-aos="fade-down">
+      <h2 class="titulo-seccion">Cortes de Damas</h2>
+      <p class="subtitulo">Elegancia, frescura y estilo para cada mujer</p>
+    </div>
 
+    <!-- Grid de Bootstrap: 3 columnas en desktop, 2 en tablet, 1 en móvil -->
+    <div class="row g-4">
+      <!-- Tarjeta 1 -->
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="corte-dama-card">
+          <img src="img/dama1.jpg" alt="Bob clásico" class="img-fluid">
+          <div class="info">
+            <h5>Bob Clásico</h5>
+            <p>Versátil y elegante para cualquier ocasión.</p>
+          </div>
+        </div>
+      </div>
 
+      <!-- Tarjeta 2 -->
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="corte-dama-card">
+          <img src="img/dama2.jpg" alt="Largo en capas" class="img-fluid">
+          <div class="info">
+            <h5>Largo en Capas</h5>
+            <p>Movimiento natural y volumen espectacular.</p>
+          </div>
+        </div>
+      </div>
 
+      <!-- Tarjeta 3 -->
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="corte-dama-card">
+          <img src="img/dama3.jpg" alt="Pixie Chic" class="img-fluid">
+          <div class="info">
+            <h5>Pixie Chic</h5>
+            <p>Moderno, fresco y súper práctico.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- Sección de ubicación con mapa --> 
-  <section class="location-section"> 
+  <!-- Sección de ubicación con mapa -->
+  <section class="location-section">
     <h2>Estamos ubicados en</h2>
     <div class="map-wrapper">
       <iframe
@@ -113,6 +140,11 @@
       </div>
     </div>
   </footer>
+
+  <!-- Botón de WhatsApp fijo abajo a la derecha -->
+<a href="https://wa.me/541112345678" class="btn-wsp" target="_blank" aria-label="Enviar mensaje por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
   <!-- Scripts de Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

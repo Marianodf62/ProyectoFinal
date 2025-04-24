@@ -1,0 +1,90 @@
+
+// SECCIÓN: CONTACTO
+
+
+// Mixin para botón responsivo
+@mixin boton($bg-color) {
+    background-color: $bg-color;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: darken($bg-color, 10%);
+      transform: scale(1.05);
+    }
+  }
+  
+  // Keyframe para animación sutil
+  @keyframes flotar {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  // Estilos del formulario
+  .contacto {
+    background: #f7f7f7;
+    border-radius: 20px;
+    padding: 2rem;
+  
+    .titulo-seccion {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: $color-text;
+    }
+  
+    .subtitulo {
+      color: $color-hover;
+      margin-bottom: 2rem;
+    }
+  
+    .formulario-contacto {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  
+      input,
+      textarea {
+        border-radius: 10px;
+        &:focus {
+          border-color: #000;
+          box-shadow: none;
+        }
+      }
+  
+      .btn-enviar {
+        @include boton(#000);
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        &:hover{
+            background-color: $color-hover;
+        }
+      }
+    }
+  }
+  
+  
+  // Media Queries para responsive
+  @media (max-width: 768px) {
+    .contacto {
+      padding: 1rem;
+  
+      .formulario-contacto {
+        padding: 1rem;
+      }
+    }
+  
+    .btn-wsp {
+      font-size: 1.8rem;
+      bottom: 15px;
+      right: 15px;
+    }
+  }
+  

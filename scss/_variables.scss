@@ -1,7 +1,6 @@
 // _variables.scss
 // Colores y tamaños base utilizados en todo el proyecto
 $color-principal: #fff; // Blanco para textos
-$color-hover: #9b59b6; // Violeta para hover y subrayado
 $color-header-bg: #2c3e50; // Fondo oscuro del header
 $font-principal: 'Poppins', sans-serif;
 $tamano-logo: 90px; // Tamaño máximo del logo
@@ -13,3 +12,11 @@ $header-height-sm: 110px; // Altura del header en pantallas pequeñas
 $primary-color: #111;
 $accent-color: #c59d5f;
 $light-bg: #f9f9f9;
+$bg-light: #f4f4f4;
+$color-text: #222;
+$color-hover: #c59d5f; // Acento dorado
+$box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+$sombra-suave: rgba(0, 0, 0, 0.1);
+$gris-claro: #f7f7f7;
+$color-principal1: #222;
+$sombra: 0 8px 20px rgba(0, 0, 0, 0.1);
